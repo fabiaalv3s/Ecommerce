@@ -1,0 +1,43 @@
+.admin-nav {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-nav-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-nav-link {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #666;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.admin-nav-link:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+.admin-nav-link.active {
+  background-color: #007bff;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .admin-nav-container {
+    flex-direction: column;
+  }
+
+  .admin-nav-link {
+    text-align: center;
+  }
+}
+
