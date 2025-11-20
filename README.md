@@ -545,3 +545,24 @@ Este projeto foi desenvolvido como projeto acadêmico.
 
 **Nota**: Certifique-se de ter configurado corretamente as variáveis de ambiente, especialmente a `OPENAI_API_KEY` para o ChatBot funcionar.
 
+### Testar ChatBot (IA vs Fallback)
+
+Para verificar se o ChatBot está usando a OpenAI API (IA real) ou o modo fallback:
+
+1. **Teste Rápido via Script:**
+   ```bash
+   npm run test:chatbot
+   ```
+
+2. **Verificar Logs do Servidor:**
+   - Ao enviar mensagem, verifique o console do servidor
+   - **IA ativa**: `🤖 [CHATBOT] Usando OpenAI API (GPT-3.5-turbo)...`
+   - **Fallback**: `🤖 [CHATBOT] Modo FALLBACK ativado`
+
+3. **Teste com Pergunta Complexa:**
+   - Pergunta: "Me recomende um presente para minha mãe"
+   - **IA**: Resposta criativa e personalizada
+   - **Fallback**: Resposta genérica padrão
+
+📖 **Guia Completo**: Veja `GUIA_TESTE_CHATBOT.md` para mais detalhes.
+

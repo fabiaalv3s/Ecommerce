@@ -30,10 +30,12 @@ export class ChatbotService {
 
       // Check if OpenAI API key is configured
       if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'dummy-key') {
+        console.log('🤖 [CHATBOT] Modo FALLBACK ativado - OpenAI API não configurada');
         return this.getFallbackResponse(message, products, userOrders);
       }
 
       try {
+        console.log('🤖 [CHATBOT] Usando OpenAI API (GPT-3.5-turbo)...');
         const completion = await this.openai.chat.completions.create({
           model: 'gpt-3.5-turbo',
           messages: [
@@ -53,9 +55,12 @@ export class ChatbotService {
           max_tokens: 200,
         });
 
-        return completion.choices[0].message.content || 'Desculpe, não consegui processar sua mensagem.';
+        const aiResponse = completion.choices[0].message.content || 'Desculpe, não consegui processar sua mensagem.';
+        console.log('✅ [CHATBOT] Resposta da IA recebida com sucesso');
+        return aiResponse;
       } catch (openaiError: any) {
-        console.error('OpenAI API Error:', openaiError);
+        console.error('❌ [CHATBOT] Erro na OpenAI API:', openaiError.message);
+        console.log('🔄 [CHATBOT] Alternando para modo FALLBACK devido ao erro');
         // Se erro da API, usar fallback
         return this.getFallbackResponse(message, products, userOrders);
       }

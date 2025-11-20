@@ -24,3 +24,5 @@ router.delete('/:id', authenticate, authorize('admin'), productController.delete
 export { router as productRoutes };
 
 
+
+
